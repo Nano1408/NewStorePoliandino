@@ -22,7 +22,7 @@ function registrarEventListeners(){
 function agregarArticulo(e){
     e.preventDefault()//previene que el boton precargue la pagina
     if(e.target.classList.contains("agregar-carrito")){
-        const articulosSeleccionados = e.target.parentElement.parentElement;
+        const articulosSeleccionados = e.target.parentElement.parentElement.parentElement.parentElement.parentElement;
         leerDatosArticulos(articulosSeleccionados);
     }
 }
