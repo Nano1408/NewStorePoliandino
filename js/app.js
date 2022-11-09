@@ -3,6 +3,12 @@ const vaciarcarrito = document.querySelector("#vaciar-carrito");
 const divCarrito = document.querySelector("#lista-carrito tbody");
 const listaArticulos = document.querySelector("#lista-articulos");
 
+const contadorCarrito = document.querySelector("#contadorCarrito");
+document.addEventListener("DOMContentLoaded",()=>{
+    carrito = JSON.parse(localStorage.getItem(articulosCarrito)) || []
+    carritoHTML()
+})
+
 let articulosCarrito = [];
 
 registrarEventListeners()
@@ -29,6 +35,7 @@ function agregarArticulo(e){
 
 //funcion para eliminar articulos
 function eliminarArticulo(e){
+    e.preventDefault()//previene que el boton precargue la pagina
     if(e.target.classList.contains("borrar-articulo")){
         const articuloID = e.target.getAttribute("data-id");
         articulosCarrito = articulosCarrito.filter(articulo=>articulo.id !== articuloID);
@@ -95,6 +102,9 @@ function carritoHTML(){
         console.log(row)
         divCarrito.appendChild(row);
     })
+    //contador de articulos agregados al carrito
+    contadorCarrito.textContent = articulosCarrito.length
+    localStorage();
 }
 
 //crear una funcion que nos limpie el html del carrito cuando demos click
@@ -106,4 +116,9 @@ function limpiarHTML(){
     while(divCarrito.firstChild){
         divCarrito.removeChild(divCarrito.firstChild);
     }
+}
+
+//funcion de localStorage para no perder los articulos agregados al carrito
+function localStorage(){
+    window.sessionStorage.setItem("carritos", JSON.stringify(articulosCarrito))
 }
