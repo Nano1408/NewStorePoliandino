@@ -24,6 +24,7 @@
 - Clearing
 - Media Queries
 */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;400;500;700;800&display=swap');
 
 .encabezado,.terminosYcondiciones {
   text-decoration: none;
@@ -38,7 +39,9 @@
 .row{
   display: block !important;
 }
-
+.row .u-pull-right{
+  margin-bottom: 0;
+}
 /* Grid
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .container {
@@ -462,15 +465,16 @@ ol {
   list-style: decimal inside; }
 ol, ul {
   padding-left: 0;
-  margin-top: 0; }
+  margin-top: 0;
+  margin-bottom: 0; }
 ul ul,
 ul ol,
 ol ol,
 ol ul {
   margin: 1.5rem 0 1.5rem 3rem;
   font-size: 90%; }
-li {
-  margin-bottom: 1rem; }
+/* li {
+  margin-bottom: 1rem; } */
 
 
 /* Code

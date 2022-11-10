@@ -5,6 +5,7 @@
  * 2. Prevent iOS text size adjust after orientation change, without disabling
  *    user zoom.
  */
+ @import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;400;500;700;800&display=swap');
 
 html {
   font-family: sans-serif; /* 1 */

@@ -1,15 +1,22 @@
+let articulosCarrito = [];
 const carrito = document.querySelector("#carrito");
 const vaciarcarrito = document.querySelector("#vaciar-carrito");
 const divCarrito = document.querySelector("#lista-carrito tbody");
 const listaArticulos = document.querySelector("#lista-articulos");
+const precioTotal = document.querySelector("#total");
+
+let precios = document.querySelector(".info-card .precio span");
+console.log(precios.textContent)
+// const removeCharacterFromString = (position) => { 
+//     precios = removeCharacterFromString.slice(position, 0)
+//     console.log(removeCharacterFromString)
+// } 
 
 const contadorCarrito = document.querySelector("#contadorCarrito");
 document.addEventListener("DOMContentLoaded",()=>{
-    carrito = JSON.parse(localStorage.getItem(articulosCarrito)) || []
+    guardarLocalStorage = JSON.parse(localStorage.getItem(articulosCarrito)) || [];
     carritoHTML()
-})
-
-let articulosCarrito = [];
+});
 
 registrarEventListeners()
 
@@ -43,7 +50,7 @@ function eliminarArticulo(e){
         // console.log(e.target.getAttribute("data-id"))
     }
 }
-
+ 
 //FUNCION QUE LEA EL HTML DONDE SE DA CLICK Y LO EXTRAEMOS
 function leerDatosArticulos(articulo){
     //creemos un objeto con los datos de card
@@ -53,6 +60,8 @@ function leerDatosArticulos(articulo){
         precio:articulo.querySelector(".precio span").textContent,
         id:articulo.querySelector("a").getAttribute("data-id"),
         cantidad:1,
+
+        
     }
     //revisemos si el articulo ya esta en el array y si esta, solo actualizo la cantidad
     //sino adiciono el nuevo articulo
@@ -76,6 +85,7 @@ function leerDatosArticulos(articulo){
 
 //INYECTAR LOS ARTICULOS DEL ARRAY EN EL HTML DEL CARRITO (tbody)
 function carritoHTML(){
+    localStorages();
     //llama la funcion que limpia el carrito
     limpiarHTML();
     articulosCarrito.forEach((articulo)=>{
@@ -99,12 +109,13 @@ function carritoHTML(){
         <a href="#" class="borrar-articulo" data-id="${articulo.id}"><img class="borrar-articulo" src="./img/eliminar-png.png" alt="eliminar.png" data-id="${articulo.id}" width="30px""></a>
         </td>
         `;
-        console.log(row)
+        //console.log(row)
         divCarrito.appendChild(row);
     })
     //contador de articulos agregados al carrito
     contadorCarrito.textContent = articulosCarrito.length
-    localStorage();
+    //calculcar precio total
+    precioTotal.innerText = articulosCarrito.reduce((acumulador, prod)=> acumulador + prod.cantidad * prod.precio, 0)
 }
 
 //crear una funcion que nos limpie el html del carrito cuando demos click
@@ -119,6 +130,6 @@ function limpiarHTML(){
 }
 
 //funcion de localStorage para no perder los articulos agregados al carrito
-function localStorage(){
-    window.sessionStorage.setItem("carritos", JSON.stringify(articulosCarrito))
-}
+function localStorages(){
+    window.localStorage.setItem("guardarLocalStorage", JSON.stringify(articulosCarrito))
+ }
