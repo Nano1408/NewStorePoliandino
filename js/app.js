@@ -3,16 +3,17 @@ const carrito = document.querySelector("#carrito");
 const vaciarcarrito = document.querySelector("#vaciar-carrito");
 const divCarrito = document.querySelector("#lista-carrito tbody");
 const listaArticulos = document.querySelector("#lista-articulos");
+const contadorCarrito = document.querySelector("#contadorCarrito");
 const precioTotal = document.querySelector("#total");
 
 let precios = document.querySelector(".info-card .precio span");
 console.log(precios.textContent)
-// const removeCharacterFromString = (position) => { 
-//     precios = removeCharacterFromString.slice(position, 0)
-//     console.log(removeCharacterFromString)
-// } 
 
-const contadorCarrito = document.querySelector("#contadorCarrito");
+function caracter(text){
+    let regEx = new regEx ("$", "g");
+    return precios.replace(regEx, "");
+}
+
 document.addEventListener("DOMContentLoaded",()=>{
     guardarLocalStorage = JSON.parse(localStorage.getItem(articulosCarrito)) || [];
     carritoHTML()

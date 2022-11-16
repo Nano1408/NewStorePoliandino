@@ -38,6 +38,7 @@
 
 .row{
   display: block !important;
+  transition: .5s;
 }
 .row .u-pull-right{
   margin-bottom: 0;
@@ -52,6 +53,7 @@
   max-width: 960px;
   margin: 0 auto;
   padding: 0 20px;
+  transition: .5s;
   box-sizing: border-box; }
 .column,
 .columns {
