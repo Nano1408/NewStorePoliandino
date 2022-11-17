@@ -86,9 +86,9 @@ function leerDatosArticulos(articulo){
 
 //INYECTAR LOS ARTICULOS DEL ARRAY EN EL HTML DEL CARRITO (tbody)
 function carritoHTML(){
-    localStorages();
     //llama la funcion que limpia el carrito
     limpiarHTML();
+    localStorages();
     articulosCarrito.forEach((articulo)=>{
         const {imagen,titulo,precio,cantidad,id} = articulo;//destructuring
 
